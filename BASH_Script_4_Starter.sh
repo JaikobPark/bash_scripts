@@ -18,12 +18,20 @@ for (( i=1-1; i<${#lyrics[@]};i+=2)); do
 	song2+=(${lyrics[$i+1]})
 done
 
-echo "${song1[*]}"
-echo "${song1[*]}"
-
 for i in "${song1[@]}"; do
-	echo "$i"
-	song1_print+=("$i")
+	song1_print="${song1_print} ${i}"
 done
 
-echo "$song1_print"
+for i in "${song2[@]}"; do
+	song2_print="${song2_print} ${i}"
+done
+
+
+song1_print=$(echo $song1_print | sed 's/|/\n/g')
+song2_print=$(echo $song2_print | sed 's/|/\n/g')
+
+echo -e "\nSong one: \n$song1_print"
+echo -e "\nSong two: \n$song2_print"
+
+#grab duplicates
+#sort new song
