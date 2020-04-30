@@ -13,19 +13,17 @@ song2_print=""
 
 IFS=":" read -r -a lyrics <<< "$lyrics_string"
 
-echo "${lyrics[*]}"
-
-for (( i=0; i<${#lyrics[@]}; i=i+2)) ;do
-	echo > /dev/null 2>&1
-	song1+=${lyrics[$i]}
-	song2+=$((${lyrics[$i+1]}))
+for (( i=1-1; i<${#lyrics[@]};i+=2)); do
+	song1+=(${lyrics[$i]})
+	song2+=(${lyrics[$i+1]})
 done
 
 echo "${song1[*]}"
+echo "${song1[*]}"
 
-for a in "${song1[@]}";
-do
-	song1_print+=$(($a))
-	echo "$song1_print"
+for i in "${song1[@]}"; do
+	echo "$i"
+	song1_print+=("$i")
 done
 
+echo "$song1_print"
